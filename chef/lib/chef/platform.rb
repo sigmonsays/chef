@@ -75,7 +75,13 @@ class Chef
           :cron => Chef::Provider::Cron,
         }
       },
-      :solaris  => {},
+      :solaris  => {
+         :default => {
+          :package => Chef::Provider::Package::Opensolaris,
+          :service => Chef::Provider::Service::Opensolaris,
+          :group => Chef::Provider::Group::Opensolaris,
+         }
+      },
       :default  => {
         :file => Chef::Provider::File,
         :directory => Chef::Provider::Directory,
