@@ -75,7 +75,13 @@ class Chef
           :cron => Chef::Provider::Cron,
         }
       },
-      :solaris  => {},
+      :solaris  => {
+         :default => {
+          :package => Chef::Provider::Package::Opensolaris,
+          :service => Chef::Provider::Service::Opensolaris,
+          :group => Chef::Provider::Group::Opensolaris,
+         }
+      },
       :default  => {
         :file => Chef::Provider::File,
         :directory => Chef::Provider::Directory,
@@ -93,7 +99,7 @@ class Chef
         :bash => Chef::Provider::Script,
         :csh => Chef::Provider::Script,
         :user => Chef::Provider::User::Useradd,
-        :group => Chef::Provider::Group::Gpasswd,
+        :group => Chef::Provider::Group::Groupadd,
         :http_request => Chef::Provider::HttpRequest,
         :route => Chef::Provider::Route,
         :ifconfig => Chef::Provider::Ifconfig,
